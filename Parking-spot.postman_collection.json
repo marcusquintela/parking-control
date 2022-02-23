@@ -1,0 +1,136 @@
+{
+	"info": {
+		"_postman_id": "0b349f12-81d8-41f7-8c98-b1b9bf003ffe",
+		"name": "Parking-spot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Parking Spot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licensePlateCar\":\"RRS856E\",\r\n    \"parkingSpotNumber\":\"205E\",    \r\n    \"brandCar\":\"hyundai\",    \r\n    \"modelCar\":\"hb20\",\r\n    \"colorCar\":\"black\",\r\n    \"responsibleName\":\"Pedro Souza\",\r\n    \"apartament\":\"205\",\r\n    \"block\":\"EC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/parking-spot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parking-spot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET All Parking Spot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/parking-spot/?page=0&size=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parking-spot",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET by Id Parking Spot",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/parking-spot/e4f4283c-9d26-4f2d-9770-9aa130d8cc22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parking-spot",
+						"e4f4283c-9d26-4f2d-9770-9aa130d8cc22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE by Id Parking Spot",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/parking-spot/d3026e00-beef-4a4a-8c65-48b1b7df7375",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parking-spot",
+						"d3026e00-beef-4a4a-8c65-48b1b7df7375"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Parking Spot",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"licensePlateCar\":\"MM25334\",\r\n    \"parkingSpotNumber\":\"205D\",    \r\n    \"brandCar\":\"audi\",    \r\n    \"modelCar\":\"q5\",\r\n    \"colorCar\":\"black\",\r\n    \"responsibleName\":\"Carlos Daniel\",\r\n    \"apartament\":\"205\",\r\n    \"block\":\"B\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/parking-spot/b1f02faa-a511-456d-9c24-5cc9a266e619",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"parking-spot",
+						"b1f02faa-a511-456d-9c24-5cc9a266e619"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
