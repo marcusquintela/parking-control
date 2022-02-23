@@ -3,6 +3,8 @@ package com.api.parkingcontrol.controllers;
 import com.api.parkingcontrol.dto.ParkingSpotDto;
 import com.api.parkingcontrol.models.ParkingApotModel;
 import com.api.parkingcontrol.services.ParkingSpoService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,8 +23,10 @@ import java.util.UUID;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/parking-spot")
+@Api(value = "API REST Parking Spot")
+@ApiOperation(value = "Parking Spot")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ParkingSpotController {
 
     final ParkingSpoService parkingSpoService;
@@ -32,6 +36,7 @@ public class ParkingSpotController {
     }
 
     @PostMapping
+    @ApiOperation(value = "Save a parking spot.")
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto) {
 
         if (parkingSpoService.existsByLicensePlaterCar(parkingSpotDto.getLicensePlateCar())) {
@@ -55,12 +60,14 @@ public class ParkingSpotController {
     }
 
     @GetMapping
+    @ApiOperation(value = "Return all parking spot.")
     public ResponseEntity<Page<ParkingApotModel>> getAllParkingSpot(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.ASC) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpoService.findAll(pageable));
     }
 
     @GetMapping("/{id}")
+    @ApiOperation(value = "Return a parking spot by id.")
     public ResponseEntity<Object> getParkingSpotById(@PathVariable(value = "id") UUID id) {
 
         Optional<ParkingApotModel> optionalParkingApotModel = parkingSpoService.findById(id);
@@ -72,6 +79,7 @@ public class ParkingSpotController {
     }
 
     @DeleteMapping("/{id}")
+    @ApiOperation(value = "Delete parking spot by id.")
     public ResponseEntity<Object> deleteParkingSpotById(@PathVariable(value = "id") UUID id) {
 
         Optional<ParkingApotModel> optionalParkingApotModel = parkingSpoService.findById(id);
@@ -85,6 +93,7 @@ public class ParkingSpotController {
     }
 
     @PutMapping("/{id}")
+    @ApiOperation(value = "Update parking spot by id.")
     public ResponseEntity<Object> updateParkingSpotById(@PathVariable(value = "id") UUID id, @RequestBody @Valid ParkingSpotDto parkingSpotDto) {
 
         Optional<ParkingApotModel> optionalParkingApotModel = parkingSpoService.findById(id);
